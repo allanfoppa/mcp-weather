@@ -18,24 +18,24 @@ MCP (Model Context Protocol) is a protocol that allows you to expose capabilitie
 
 ### Tools
 
-| Tool | Description | Parameters |
-|------|-------------|------------|
-| `get-alerts` | Get active weather alerts for a US state | `state` — two-letter state code (e.g. `CA`, `NY`) |
-| `get-forecast` | Get weather forecast for a US location | `latitude`, `longitude` |
+| Tool           | Description                              | Parameters                                        |
+| -------------- | ---------------------------------------- | ------------------------------------------------- |
+| `get-alerts`   | Get active weather alerts for a US state | `state` — two-letter state code (e.g. `CA`, `NY`) |
+| `get-forecast` | Get weather forecast for a US location   | `latitude`, `longitude`                           |
 
 ### Resources
 
-| URI | Description |
-|-----|-------------|
-| `weather://alerts/{state}` | Active weather alerts for a US state |
+| URI                                | Description                                               |
+| ---------------------------------- | --------------------------------------------------------- |
+| `weather://alerts/{state}`         | Active weather alerts for a US state                      |
 | `weather://forecast/{coordinates}` | Weather forecast for a location (e.g. `40.7128,-74.0060`) |
 
 ### Prompts
 
-| Prompt | Description | Arguments |
-|--------|-------------|-----------|
-| `weather-summary` | Complete weather summary for a city | `city`, `state` |
-| `severe-weather-check` | Check for severe weather alerts in a state | `state` |
+| Prompt                 | Description                                | Arguments       |
+| ---------------------- | ------------------------------------------ | --------------- |
+| `weather-summary`      | Complete weather summary for a city        | `city`, `state` |
+| `severe-weather-check` | Check for severe weather alerts in a state | `state`         |
 
 ---
 
@@ -47,7 +47,12 @@ src/
 │   ├── tools.ts       # get-alerts, get-forecast
 │   ├── resources.ts   # weather://alerts, weather://forecast
 │   └── prompts.ts     # weather-summary, severe-weather-check
+├── registers/
+│   ├── tools.ts       # Register tools in the server
+│   ├── resources.ts   # Register resources in the server
+│   └── prompts.ts     # Register prompts in the server
 ├── api.ts             # NWS API client
+├── server.ts          # Create MCP Server
 ├── formatters.ts      # Data formatting helpers
 ├── types.ts           # TypeScript interfaces
 ├── constants.ts       # Global constants
